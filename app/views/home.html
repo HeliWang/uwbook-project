@@ -1,0 +1,184 @@
+﻿<div class="gb-page-body">
+
+    <div class="container">
+        <div class="row">
+            <div class="alert alert-info">
+                <h4>Tips for using search panel</h4>
+                Search by a course number(e.g. Math135) , or a book name. To add a new book, directly click <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-sm">
+                    NEW POST
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-centered">
+
+    </div>
+
+
+
+    <div class="container row-centered">
+
+        <div dir-paginate="book in books | filter:q | itemsPerPage: 8" current-page="currentPage">
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="media book">
+                    <div class="book-inner">
+                        <div class="col-md-3 book-infos">
+                            <a href ng-click="changeCurrent(book)">
+                                <img width="111.5" height="131.25" src={{book.CoverURL}} />
+                            </a>
+                        </div>
+                        <div class="col-md-9 vcenter">
+                            <h4>
+                                <a href="#">{{ book.Name }}</a>
+                            </h4>
+                            <p class="author"> <a href="#">{{ book.ISBN }} </a> <small>{{ book.Author }} <br></small></p>
+                            <p class="description">
+                                <a href="#" ng-repeat="subject in book.Subjects">
+                                    <kbd class="bg-info text-danger">{{ subject }}</kbd> &nbsp;
+                                </a>
+                            </p>
+
+                            <p class="description">
+                                <a ng-repeat="seller in book.Sellers" href="#" title={{seller.Note}}> <kbd class="bg-primary"> $ {{seller.Price}} </kbd> &nbsp; </a>
+                               
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+
+            <div ng-if="$odd">
+                <div class="clearfix visible-lg visible-md"></div>
+                <div class="clearfix hidden-lg hidden-md"></div>
+                <br>
+            </div>
+
+        </div>
+
+        <div class="clearfix visible-lg visible-md"></div>
+        <div class="clearfix hidden-lg hidden-md"></div>
+
+        <ul class="pager">
+            <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="dirPagination.tpl.html"></dir-pagination-controls>
+        </ul>
+
+        
+
+    </div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog  modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{currentbook.Name}}</h4>
+            </div>
+            <div class="modal-body">
+                
+
+                <div>
+                    <form role="form">
+                        <div class="col-sm-3 form-group float-label-control">
+                            <label for="">Price</label>
+                            <input type="number" class="form-control" min="0.01" step="0.01" max="2500" placeholder="Book Price" />
+                        </div>
+                        <div class="col-sm-8 form-group float-label-control">
+                            <label for="">Description</label>
+                            <input type="text" class="form-control" placeholder="Book Condition? How to contact you?">
+                        </div>
+                        <div class="col-sm-1 form-group float-label-control">
+                            <label for=""> &nbsp; </label>
+                            <button type="submit" class="btn btn-primary btn-bg">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%">Price</th>
+                            <th style="width: 20%">Last Update</th>
+                            <th style="width: 50%">Description</th>
+                            <th style="width: 20%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="Seller in currentbook.Sellers">
+                            <td>{{Seller.Price}}</td>
+                            <td>{{Seller.Post}}</td>
+                            <td>{{Seller.Note}}</td>
+                            <td> <a href={{Seller.Contact}}>Contact</a><span class="badge">{{Seller.Hot}}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog  modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add new books</h4>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                        <form role="form">
+                            <div class="form-group float-label-control">
+                                <label for="">Book ISBN</label>
+                                <input type="text" class="form-control" placeholder="Book ISBN">
+                            </div>
+                            <div class="form-group float-label-control">
+                                <label for="">Book Name</label>
+                                <input type="text" class="form-control" placeholder="Book Name">
+                            </div>
+                            <div class="form-group float-label-control">
+                                <label for="">Book Author</label>
+                                <input type="text" class="form-control" placeholder="Book Author">
+                            </div>
+                            <div class="form-group float-label-control">
+                                <label for="">Book Cove Image</label>
+                                <input type="text" class="form-control" placeholder="Book Cove Image URL">
+                            </div>
+                            <div class="form-group float-label-control">
+                                <label for="">Subject</label>
+                                <input type="text" class="form-control" placeholder="Related Subject">
+                            </div>
+                        </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

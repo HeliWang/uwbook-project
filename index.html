@@ -1,0 +1,125 @@
+﻿<html data-ng-app="UWBOOK">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="cover" data-ng-controller="indexController">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">UwBook.ca</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="#">Explore</a>
+                        </li>
+                        <li>
+                            <a href="#">Join Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="cover-image" style="background-image : url('https://unsplash.imgix.net/photo-1422513391413-ddd4f2ce3340?w=1024&amp;q=50&amp;fm=jpg&amp;s=282e5978de17d6cd2280888d16f06f04')"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Textbook Trade is Fun</h1>
+                    <p>Type in your UW email address and begin to explore</p>
+                    <br>
+                    <div class="col-md-offset-3 col-md-6">
+                        <form name="myform" action="javascript:WriteCookie();" role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="watiam" class="form-control" name="user" onclick="adduw();" placeholder="WatIAm-ID@uwaterloo.ca">
+                                    <span class="input-group-btn">
+                                        <a class="btn btn-success" onclick="WriteCookie();">Go</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body...</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a class="btn btn-primary">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <script type="text/javascript">
+         <!--
+        function setSelectionRange(input, selectionStart, selectionEnd) {
+            if (input.setSelectionRange) {
+                input.focus();
+                input.setSelectionRange(selectionStart, selectionEnd);
+            }
+            else if (input.createTextRange) {
+                var range = input.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', selectionEnd);
+                range.moveStart('character', selectionStart);
+                range.select();
+            }
+        }
+
+        function setCaretToPos(input, pos) {
+            setSelectionRange(input, pos, pos);
+        }
+
+
+            function WriteCookie(){
+                if (document.getElementById("watiam").value == "") {
+                  alert("Enter your uw email!");
+                  return;
+               }
+               window.location.href = '/main.html#/home?user=' + document.getElementById("watiam").value;
+            }
+
+            function adduw() {
+                var docvalue = escape(document.getElementById("watiam").value);
+                if (docvalue == "") {
+                    document.getElementById("watiam").value += "@uwaterloo.ca";
+                    setCaretToPos(document.getElementById("watiam"), 0);
+                }
+            }
+
+
+         //-->
+    </script>
+
+
+
+    
+</body>
+</html>

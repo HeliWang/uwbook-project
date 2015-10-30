@@ -1,0 +1,110 @@
+﻿<!DOCTYPE HTML>
+<html data-ng-app="UWBOOK">
+<title>uwBook.ca · University of Waterloo · Buy and sell used books, coursenotes, and past papers online</title>
+<meta charset="UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/assets/images/logo/favicon.ico">
+<link href="content/css/uwbook.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-animate.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
+<script src="scripts/dirPagination.js"></script>
+<!-- Load app main script -->
+<script src="app/app.js"></script>
+<!-- Load controllers -->
+<script src="app/controllers/indexController.js"></script>
+<script src="app/controllers/homeController.js"></script>
+
+
+
+<!-- Load custom filters -->
+<!-- Load custom directives -->
+
+
+<meta name="description" content="Selling and buying used book and coursenotes in University of Waterloo">
+<meta name="keywords" content="uwbook,uwaterloo,uw,used,courseware,coursenotes">
+
+    </head>
+<body>
+
+
+    <div data-ng-controller="indexController" id="page-homepage" style="width: 100%;height: 100%;">
+        <div class="gb-page-wrapper">
+
+
+            <div class="gb-page-header">
+                <div class="container clearfix">
+                    <a href="/" class="logo pull-left">
+                        <img src="/assets/images/logo/128.png" srcset="/assets/images/logo/1281.png, /assets/images/logo/1282.png" />
+                        <h1>UwBook.ca</h1>
+                    </a>
+
+                    <form action="javascript:gosearch();" class="pull-right col-sm-3 col-md-3 col-xs-3 hidden-xs" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="q" id="search" placeholder="Filter (Course, Book)" name="q">
+                        </div>
+                    </form>
+
+                    <script type="text/javascript">
+        
+       
+            function gosearch(){
+               
+                window.location.href = '/main.html#/home?search=' + document.getElementById("search").value;
+            }
+
+          
+
+         //-->
+                    </script>
+
+
+                    <!--  <a href="/login" class="btn btn-default pull-right hidden-xs btn-login">Sign In</a>-->
+                    <!-- <a href="/join" class="btn btn-success btn-fill pull-right hidden-xs btn-signup">Sign Up</a>-->
+                    <!-- <a href="/blog" class="btn btn-link pull-right hidden-xs">Blog</a>-->
+
+                    <a href="#" class="btn btn-link pull-right hidden-xs">{{authentication.userName}}</a>
+
+
+                </div>
+            </div>
+
+
+            <div data-ng-view="">
+
+                
+            </div>
+
+
+            <div class="gb-page-footer">
+                <div class="container">
+                    <ul class="menu">
+
+                        <li><a target="_blank" href="" mailto:h379wang@uwaterloo.ca">An Asp.net open-source application</a></li>
+
+                        <li class="pull-right">
+                            <span>
+                                <a href="http://heliwang.me" class="twitter-follow-button" data-show-count="false">Github</a>
+                            </span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
