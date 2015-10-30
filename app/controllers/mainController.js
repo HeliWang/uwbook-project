@@ -1,9 +1,9 @@
 ﻿'use strict';
-app.controller('indexController', ['$scope', '$location', function ($scope, $location) {
+app.controller('mainController', ['$scope', '$location', function ($scope, $location) {
     $scope.go = function (path) {
         $location.path(path);
     };
-    console.log("INDEX");
+    console.log("mainController");
 
     $scope.authentication = {
     };

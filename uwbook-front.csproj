@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AngularJSAuthentication.Web</RootNamespace>
-    <AssemblyName>AngularJSAuthentication.Web</AssemblyName>
+    <RootNamespace>UWBOOK.Web</RootNamespace>
+    <AssemblyName>UWBOOK.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\homeController.js" />
-    <Content Include="app\controllers\indexController.js" />
+    <Content Include="app\controllers\mainController.js" />
     <Content Include="app\views\home.html" />
     <Content Include="content\css\uwbook.css" />
     <Content Include="content\fonts\glyphicons-halflings-regular.eot" />

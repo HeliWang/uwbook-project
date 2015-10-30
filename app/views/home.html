@@ -4,7 +4,7 @@
         <div class="row">
             <div class="alert alert-info">
                 <h4>Tips for using search panel</h4>
-                Search by a course number(e.g. Math135) , or a book name. To add a new book, directly click <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-sm">
+                Search by a course number(e.g. Math135) , or a book name. To add a new book, directly click <button data-toggle="modal" data-target="#addModal" class="btn btn-primary btn-sm">
                     NEW POST
                 </button>
             </div>
@@ -25,23 +25,23 @@
                 <div class="media book">
                     <div class="book-inner">
                         <div class="col-md-3 book-infos">
-                            <a href ng-click="changeCurrent(book)">
+                            <a href ng-click="bookDetail(book)">
                                 <img width="111.5" height="131.25" src={{book.CoverURL}} />
                             </a>
                         </div>
                         <div class="col-md-9 vcenter">
                             <h4>
-                                <a href="#">{{ book.Name }}</a>
+                                <a href ng-click="bookDetail(book)">{{ book.Name }}</a>
                             </h4>
-                            <p class="author"> <a href="#">{{ book.ISBN }} </a> <small>{{ book.Author }} <br></small></p>
+                            <p class="author"> <a href ng-click="bookDetail(book)">{{ book.ISBN }} </a> <small>{{ book.Author }} <br></small></p>
                             <p class="description">
-                                <a href="#" ng-repeat="subject in book.Subjects">
-                                    <kbd class="bg-info text-danger">{{ subject }}</kbd> &nbsp;
-                                </a>
+                               
+                                    <kbd ng-repeat="subject in book.Subjects" class="bg-info text-danger">{{ subject }}</kbd> &nbsp;
+                                
                             </p>
-
+                            
                             <p class="description">
-                                <a ng-repeat="seller in book.Sellers" href="#" title={{seller.Note}}> <kbd class="bg-primary"> $ {{seller.Price}} </kbd> &nbsp; </a>
+                                <a href ng-repeat="seller in book.Sellers" ng-click="bookDetail(book)" title={{seller.Note}}> <kbd class="bg-primary"> $ {{seller.Price}} </kbd> &nbsp; </a>
                                
                             </p>
                         </div>
@@ -78,8 +78,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog  modal-lg">
+<div class="modal fade" id="detailModal" role="dialog">
+    <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -136,7 +136,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal2" role="dialog">
+<div class="modal fade" id="addModal" role="dialog">
     <div class="modal-dialog  modal-lg">
 
         <!-- Modal content-->

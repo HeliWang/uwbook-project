@@ -36,10 +36,10 @@ app.controller('homeController', ['$scope', '$log', '$routeParams', function ($s
         console.log('going to page ' + num);
     };
 
-    $scope.changeCurrent = function (obj) {
+    $scope.bookDetail = function (obj) {
         $scope.currentbook = obj;
         console.log($scope.currentbook);
-        $('#myModal').modal('show')
+        $('#detailModal').modal('show')
     };
 
 
