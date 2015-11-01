@@ -36,7 +36,7 @@
                             <p class="author"> <a href ng-click="bookDetail(book)">{{ book.ISBN }} </a> <small>{{ book.Author }} <br></small></p>
                             <p class="description">
                                
-                                    <kbd ng-repeat="subject in book.Subjects" class="bg-info text-danger">{{ subject }}</kbd> &nbsp;
+                                    <kbd ng-repeat="subject in book.Subjects" class="bg-info text-danger">{{ subject.SubjectName }}</kbd> &nbsp;
                                 
                             </p>
                             
@@ -94,15 +94,15 @@
                     <form role="form">
                         <div class="col-sm-3 form-group float-label-control">
                             <label for="">Price</label>
-                            <input type="number" class="form-control" min="0.01" step="0.01" max="2500" placeholder="Book Price" />
+                            <input type="number" ng-model="newPrice" class="form-control" min="0.01" step="0.01" max="2500" placeholder="Book Price" />
                         </div>
                         <div class="col-sm-8 form-group float-label-control">
                             <label for="">Description</label>
-                            <input type="text" class="form-control" placeholder="Book Condition? How to contact you?">
+                            <input type="text" ng-model="newNote" class="form-control" placeholder="Book Condition? How to contact you?">
                         </div>
                         <div class="col-sm-1 form-group float-label-control">
                             <label for=""> &nbsp; </label>
-                            <button type="submit" class="btn btn-primary btn-bg">Add</button>
+                            <button type="submit" ng-click="addSeller()" class="btn btn-primary btn-bg">Add</button>
                         </div>
                     </form>
                 </div>
@@ -121,7 +121,8 @@
                             <td>{{Seller.Price}}</td>
                             <td>{{Seller.Post}}</td>
                             <td>{{Seller.Note}}</td>
-                            <td> <a href={{Seller.Contact}}>Contact</a><span class="badge">{{Seller.Hot}}</span></td>
+                            <!-- <td> <a href={{Seller.Contact}}>Contact</a><span class="badge">{{Seller.Hot}}</span></td> -->
+                            <td> <a href ng-click="addHot(Seller.SellerID)">Contact</a><span class="badge">{{Seller.Hot}}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -151,30 +152,30 @@
                         <form role="form">
                             <div class="form-group float-label-control">
                                 <label for="">Book ISBN</label>
-                                <input type="text" class="form-control" placeholder="Book ISBN">
+                                <input type="text" ng-model="newISBN" class="form-control" placeholder="Book ISBN">
                             </div>
                             <div class="form-group float-label-control">
                                 <label for="">Book Name</label>
-                                <input type="text" class="form-control" placeholder="Book Name">
+                                <input type="text" ng-model="newName" class="form-control" placeholder="Book Name">
                             </div>
                             <div class="form-group float-label-control">
                                 <label for="">Book Author</label>
-                                <input type="text" class="form-control" placeholder="Book Author">
+                                <input type="text" ng-model="newAuthor" class="form-control" placeholder="Book Author">
                             </div>
                             <div class="form-group float-label-control">
                                 <label for="">Book Cove Image</label>
-                                <input type="text" class="form-control" placeholder="Book Cove Image URL">
+                                <input type="text" ng-model="newCover" class="form-control" placeholder="Book Cove Image URL">
                             </div>
                             <div class="form-group float-label-control">
                                 <label for="">Subject</label>
-                                <input type="text" class="form-control" placeholder="Related Subject">
+                                <input type="text"  ng-model="newSubject" class="form-control" placeholder="Related Subject">
                             </div>
                         </form>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-default" ng-click="addBook()">Submit</button>
             </div>
         </div>
 

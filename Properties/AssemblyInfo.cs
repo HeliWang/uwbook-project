@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("UWBOOK.Web")]
+[assembly: AssemblyTitle("uwbook_webapi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("UWBOOK.Web")]
+[assembly: AssemblyProduct("uwbook_webapi")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("26a480da-1cef-4552-ba96-e0bb1776f826")]
+[assembly: Guid("c99694cb-f129-45ff-a290-39dfe6dd25c4")]
 
 // Version information for an assembly consists of the following four values:
 //

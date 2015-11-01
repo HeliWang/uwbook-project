@@ -2,7 +2,7 @@
 app.controller('homeController', ['$scope', '$log', '$http', '$routeParams', function ($scope, $log, $http, $routeParams) {
     console.log("Home Controller");
 
-    var APIserver = "http://localhost:60219/";
+    var APIserver = "/";
 
     var user = $routeParams.user;
     $log.info('SomeCtrl home! user: ' + user + "Type: "+typeof user);
@@ -33,7 +33,10 @@ app.controller('homeController', ['$scope', '$log', '$http', '$routeParams', fun
           ISBN: "1594633940",
           Author: "Marlon James",
           CoverURL: "http://i.ebayimg.com/00/s/NDAwWDI2NA==/z/hi0AAOSw-ndTndXU/$_7.JPG?set_id=89040003C1",
-          Subjects: ["CS245"],
+          Subjects: [   {
+      "SubjectID": 1,
+      "SubjectName": "sample string 2"
+    },],
           Sellers: [{ Price: 32.5, Post: "20151028 10:41:52",  Note: "Never used, My phone number 2269787328" , Contact: "h379wang@uwaterloo.ca", Hot: 2 },
                     { Price: 16.8, Post: "20151028 10:41:53", Note: "Used, My phone number 2269787328", Contact: "h379wang@uwaterloo.ca", Hot:3 }]
       },
@@ -55,9 +58,124 @@ app.controller('homeController', ['$scope', '$log', '$http', '$routeParams', fun
 
     $scope.bookDetail = function (obj) {
         $scope.currentbook = obj;
-        console.log($scope.currentbook);
-        $('#detailModal').modal('show')
+       
+        $('#detailModal').modal('show');
     };
+
+    var myDate = new Date;
+    
+
+    $scope.addSeller = function () {
+        var req = {
+            method: 'PUT',
+            url: 'api/Books/' + $scope.currentbook.ID,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: { 
+                Price: $scope.newPrice,
+                Note:  $scope.newNote,
+                Contact: user,
+                Post: myDate.getFullYear() + "-" + (myDate.getMonth() + 1) + "-" + myDate.getDate() + " " +
+myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds(),
+                Hot: 0
+            }
+        }
+
+        $http(req).then(function () {
+            $http.get(APIserver + "api/Books").success(function (response) {
+                $scope.books = response;
+                for (var index = 0; index < $scope.books.length; ++index) {
+                    if ($scope.books[index].ID == $scope.currentbook.ID) $scope.currentbook = $scope.books[index]
+                }
+                $log.info(response);
+            });
+            $scope.newPrice = undefined;
+            $scope.newNote = undefined;
+           
+        }, function () { });
+    };
+
+    $scope.addHot = function (sellerid) {
+        console.log("seller" + sellerid);
+        
+        $http.get(APIserver + "api/Sellers/" + sellerid).success(function (response) {
+            $http.get(APIserver + "api/Books").success(function (response) {
+                $scope.books = response;
+                for (var index = 0; index < $scope.books.length; ++index) {
+                    if ($scope.books[index].ID == $scope.currentbook.ID) $scope.currentbook = $scope.books[index]
+                }
+                $log.info(response);
+            });
+        });
+
+    }
+
+    $scope.deleteSeller = function (sellerid) {
+        console.log("seller" + sellerid);
+
+        var req = {
+            method: 'Delete',
+            url: APIserver + "api/Sellers/" + sellerid,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: {}
+        }
+
+        $http(req).success(function (response) {
+            $http.get(APIserver + "api/Books").success(function (response) {
+                $scope.books = response;
+                for (var index = 0; index < $scope.books.length; ++index) {
+                    if ($scope.books[index].ID == $scope.currentbook.ID) $scope.currentbook = $scope.books[index]
+                }
+                $log.info(response);
+            });
+        });
+
+    }
+
+    $scope.addBook = function () {
+
+        var req = {
+            method: 'POST',
+            url: 'api/Books/',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: 
+                {
+                    "Name": $scope.newName,
+                    "ISBN": $scope.newISBN,
+                    "Author": $scope.newAuthor,
+                    "CoverURL": $scope.newCover,
+                    "Subjects": [
+                      {
+                          "SubjectName": $scope.newSubject
+                      }
+                    ],
+                    "Sellers": []
+                }
+            }
+        
+
+        console.log(req);
+
+        $http(req).then(function () {
+            $('#addModal').modal('hide');
+            $http.get(APIserver + "api/Books").success(function (response) {
+                $scope.books = response;
+                $log.info(response);
+            });
+            $scope.newISBN = undefined;
+            $scope.newName = undefined;
+            $scope.newAuthor = undefined;
+            $scope.newCover = undefined;
+            $scope.newSubject = undefined;
+            console.log("succeed"); 
+        }, function () { console.log("fail");  });
+    };
+
 
 
 }]);

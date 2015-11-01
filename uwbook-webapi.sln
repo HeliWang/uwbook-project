@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwbook-front", "uwbook-front.csproj", "{E4156422-2684-4222-95C2-4B9AE4CBA7E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uwbook-webapi", "uwbook-webapi.csproj", "{C99694CB-F129-45FF-A290-39DFE6DD25C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E4156422-2684-4222-95C2-4B9AE4CBA7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4156422-2684-4222-95C2-4B9AE4CBA7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4156422-2684-4222-95C2-4B9AE4CBA7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4156422-2684-4222-95C2-4B9AE4CBA7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99694CB-F129-45FF-A290-39DFE6DD25C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99694CB-F129-45FF-A290-39DFE6DD25C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99694CB-F129-45FF-A290-39DFE6DD25C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99694CB-F129-45FF-A290-39DFE6DD25C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
